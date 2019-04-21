@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Word Game</title>
+
+</head>
+
+<style>
+    body {
+        background: url(movie.png) no-repeat;
+        color: orange;
+        text-align: center;
+    }
+
+    .characters {
+
+        width: 30px;
+        height: 30px;
+        padding: 10px;
+        margin: 40px;
+
+
+    }
+</style>
+
+
+
+
+<body>
+    <h2>You have 10 chances to guess the Movie! Press any key to get started!</h2>
+
+    <!-- I don't know what the heck this is... Just trying something that doesn't work. -->
+    <div id="empty-div"></div>
+    <div id="user-guessing"></div>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+
+        // Words that will option through the game in an array.
+        const words = ["Matrix", "Star Wars", "Purple Rain", "Blade", "Avengers"];
+
+        // Active word in play of the game.  Right now is static for testing to index(0)
+        let newWord = words[0];
+
+        //this is just for practice to understand DOM no real purpose to show and test.
+        var targetDiv = document.getElementById("empty-div");
+        targetDiv.textContent = newWord;
+        
+
+
+
+
+        //Confirm active word
+        console.log(newWord);
+
+        // My attempt at getting the word to appear in the DOM, but doc write wipes. 
+        // document write should say "document.wipeOUT - I digress"
+        // document.write(newWord.fontcolor("red"));
+
+        // key listening, once onkeyup is triggered the function "event" begins
+        // user input is stored as userGuess.  The input is then checked to see if it is
+        // contained in the newWord or not. The variable named search is the character position
+        // of the matched letter in the word.
+
+
+        document.onkeyup = function (event) {
+            let userGuess = event.key
+            let search = newWord.search(userGuess);
+
+
+            if (search > -1)
+
+
+                targetDiv.textContent = userGuess;
+
+            // console.log("You have a correct letter!") 
+
+
+            else
+                console.log("You don't have a correct letter!");
+
+            // character position and userGuess both console correctly
+            console.log(search + userGuess);
+
+
+
+
+
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
+
+
+
+<!-- Personal note section:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+       // function letterSearch(){
+            // var guess = newWord;
+            // var search = str.match();
+
+
+        // Need newWord to be saved and display to show number of dashes = to character count of newWord.
+    
+    Example 1
+    I started out with a flow chart of what I though how the process should flow.
+    This led me to begin with the initial action of creating an array of the words.
+    Working with the first word, no loops I played with solutions on how to find a match.
+
+     const words = ["bottle", "flower", "guitar", "lobster", "statue"];
+        let newWord = words[0];
+    
+    
+    let c = words[0][3];
+        console.log(c);
+
+        if (c.indexOf(newWord) > -1){
+
+            alert("Your letter is in this word!");
+        }
+
+    
+    
+    Example 2
+    I found this second option to be more of what I need. But I realize I need to utilize key pairs.
+
+var myString = "bottle";
+var inThere = myString.match("v");
+if (inThere) {
+  console.log(" It is in there")
+}
+else {
+   console.log("It is not in there")
+}https://www.tutorialrepublic.com/faq/how-to-replace-character-inside-a-string-in-javascript.php
+https://www.abeautifulsite.net/adding-and-removing-elements-on-the-fly-using-javascript
+
+
+} -->
