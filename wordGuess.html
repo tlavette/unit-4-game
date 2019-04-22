@@ -11,18 +11,21 @@
 
 <style>
     body {
-        background: url(movie.png) no-repeat;
+        background: url(movie.png)no-repeat;
+        background-size: cover;
         color: orange;
         text-align: center;
     }
 
     .characters {
-
         width: 30px;
         height: 30px;
         padding: 10px;
         margin: 40px;
+    }
 
+    #empty-div {
+        margin-top: 25%;
 
     }
 </style>
@@ -46,17 +49,30 @@
 
         // Active word in play of the game.  Right now is static for testing to index(0)
         let newWord = words[0];
+        let newWordArray = newWord.split("");
+        let blanksAndLettersArray = [];
 
         //this is just for practice to understand DOM no real purpose to show and test.
-        var targetDiv = document.getElementById("empty-div");
-        targetDiv.textContent = newWord;
-        
+        var targetDiv = $("#empty-div");
+        targetDiv.text(newWord);
 
+        const createBlanks = function () {
+            for (let i = 0; i < newWordArray.length; i++) {
+                blanksAndLettersArray.push("_");
+
+            }
+
+
+        }
+
+        createBlanks();
 
 
 
         //Confirm active word
         console.log(newWord);
+        console.log(newWordArray);
+        console.log(blanksAndLettersArray);
 
         // My attempt at getting the word to appear in the DOM, but doc write wipes. 
         // document write should say "document.wipeOUT - I digress"
